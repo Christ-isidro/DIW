@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Ejercicio Menú Horizontal</title>
+	<style type="text/css">
+		.menuHorizontal ul {
+			display: flex;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+
+		}
+
+		.menuHorizontal a {
+			display: block;
+			padding: .3em;
+			text-decoration: none;
+			background-color: rgb(62, 100, 182);
+			color: white;
+			margin-right: 0.2em;
+		}
+
+		.menuHorizontal ul li ul {
+			display: none;
+			position: absolute;
+		}
+
+		.menuHorizontal ul li ul li {
+			float: left;
+			width: auto;
+		}
+
+		ul li a:hover {
+			background-color: rgb(140, 152, 204);
+		}
+
+		.menuHorizontal ul li a:hover+ul {
+			display: flex;
+		}
+
+		.menuHorizontal ul li ul:hover {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+
+	<nav class="menuHorizontal">
+		<ul>
+			<li>
+				<a href="#">Enalce UNO</a>
+				<ul>
+					<li><a href="#">Submenu1</a></li>
+					<li><a href="#">Submenu2</a></li>
+					<li><a href="#">Submenu3</a></li>
+					<li><a href="#">Submenu4</a></li>
+				</ul>
+			</li>
+
+
+			<li><a href="#">Enlace DOS</a></li>
+			<li>
+				<a href="#">Enlace TRES</a>
+				<ul>
+					<li><a href="">Submenu1</a></li>
+					<li><a href="">Submenu2</a></li>
+					<li><a href="">Submenu3</a></li>
+					<li><a href="">Submenu4</a>
+						<ul>
+							<li><a href="">Submenu1</a></li>
+							<li><a href="">Submenu2</a></li>
+							<li><a href="">Submenu3</a></li>
+							<li><a href="">Submenu4</a></li>
+						</ul>
+					</li>
+				</ul>
+
+			</li>
+			<li><a href="#">Enlace CUATRO</a></li>
+		</ul>
+	</nav>
+
+	<p>
+		En este ejemplo, dejamos que el ul y el enlace (a) floten a la izquierda.
+		Los elementos li se muestran como elementos en línea.
+		Esto hace que la lista esté en una línea.
+		El elemento ul tiene una anchura de 100% y cada enlace en la lista NO tiene anchura (auto).
+		Añadimos algunos colores y bordes para que sea más elegante.
+	</p>
+
+</body>
+
+</html>

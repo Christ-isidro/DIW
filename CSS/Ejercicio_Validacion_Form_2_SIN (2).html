@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Validar Formularios</title>
+	<style type="text/css">
+		body {
+			font-size: 18px;
+		}
+
+		h1 {
+			color: red;
+		}
+
+		h3 {
+			font-size: 1.5em;
+			color: brown;
+		}
+
+		input[type=text] {
+			border: 0;
+			border-bottom: 2px solid #062b91;
+			outline: none;
+			box-shadow: none;
+			background: none;
+		}
+
+		input[type=text]:-webkit-autofill,
+		input[type=text]:-webkit-autofill:hover,
+		input[type=text]:-webkit-autofill:focus {
+			-webkit-box-shadow: 0 0 0px 1000px #8ec3f5 inset;
+		}
+
+		fieldset {
+			background-color: #8ec3f5;
+			border: 1px solid #062b91;
+			margin: 1em 0 0 0;
+
+			legend {
+				font-size: 1.2em;
+				color: #000522;
+				background-color: #8ec3f5;
+				border-top: 2px solid #062b91;
+				border-radius: 100px;
+			}
+		}
+
+		fieldset:hover {
+			background-color: #3692e8;
+
+			legend {
+				background-color: #3692e8;
+			}
+
+			select {
+				background-color: #3692e8;
+			}
+
+			input[type=text]:-webkit-autofill,
+			input[type=text]:-webkit-autofill:hover,
+			input[type=text]:-webkit-autofill:focus {
+				-webkit-box-shadow: 0 0 0px 1000px #3692e8 inset;
+			}
+		}
+
+		select {
+			border: none;
+			border-bottom: 2px solid #062b91;
+			background-color: #8ec3f5;
+			outline: none;
+			box-shadow: none;
+		}
+
+		textarea {
+			border: none;
+			border-bottom: 2px solid #062b91;
+			background: none;
+			outline: none;
+			box-shadow: none;
+			font-weight: bold;
+		}
+
+		li {
+			list-style-type: none;
+		}
+
+		input[type=radio] {
+			width: 20px;
+			height: 20px;
+		}
+
+		input[type=radio]:checked {
+			+label {
+				font-weight: bold;
+			}
+		}
+
+		input[type=checkbox] {
+			width: 20px;
+			height: 20px;
+		}
+
+		input[type=checkbox]:checked {
+			+label {
+				font-weight: bold;
+			}
+		}
+
+		input[type=submit] {
+			background-color: #315cd2;
+			border: 2px solid #062b91;
+			color: white;
+			border-radius: 10px;
+			width: 100px;
+			height: 40px;
+			font-size: 1.2em;
+		}
+
+		input[type=reset] {
+			background-color: #315cd2;
+			border: 2px solid #062b91;
+			color: white;
+			border-radius: 10px;
+			width: 100px;
+			height: 40px;
+			font-size: 1.2em;
+		}
+
+
+		/* 
+			 * NO se ha usado float ni flex. No lo uses.
+			 * 
+			 * NO SE PUEDE USAR SELECTOR POR ID ni .CLASE
+			 *  Solo etiquetas, input[type=xxxxx] y pseudo clases
+			 *  Usar selectores de adyacencia, descendencia, hijo, etc.
+			 * 
+			 * La mayoría de las etiquetas (labels) 
+			 *  tienen un ancho de 70px;
+			 * 
+			 * Ojo a los bordes de las leyendas.
+			 * 
+			 * Colores usados:
+			 *  #FF6766;
+			 *  #E5FFBD;
+			 *  #FFCD72
+			 *  #F5BB9D;
+			 */
+	</style>
+</head>
+
+<body>
+	<h1>Ejercicio Validación de Formularios</h1>
+	<form id="formulario_1">
+		<h3>Formulario de Registro:</h3>
+		<div>(Todos los campos son obligatorios)</div>
+		<fieldset>
+			<legend>Datos personales:</legend>
+			<label for="nombre">Nombre: </label>
+			<input type="text" name="nombre" id="nombre" maxlength="25" size="15" />
+			<span id="info_nombre"></span>
+			<div>(Mínimo 2 letras)</div>
+
+			<label for="apellidos">Apellidos: </label>
+			<input type="text" name="apellidos" id="apellidos" maxlength="50" size="25" />
+			<span id="info_apellidos"></span>
+			<div>(Mínimo 4 letras)</div>
+
+			<label for="dni">NIF: </label>
+			<input type="text" name="dni" id="dni" maxlength="9" size="9" />
+			<span id="info_dni"></span>
+		</fieldset>
+
+
+		<fieldset class="adicionales">
+			<legend>Datos adicionales:</legend>
+			<label>Sexo: </label>
+			<ul>
+				<li>
+					<input type="radio" name="sexo" value="femenino" />
+					<label for="femenino">Femenino</label>
+				</li>
+				<li>
+					<input type="radio" name="sexo" value="masculino" />
+					<label for="masculino">Masculino</label>
+				</li>
+				<li>
+					<input type="radio" name="sexo" value="ni_me_acuerdo" />
+					<label for="ni_me_acuerdo">hace tanto que ni me acuerdo</label>
+				</li>
+			</ul>
+			<span id="info_sexo"></span>
+
+			<label for="f_dia">Fecha: </label>
+			<input type="text" id="f_dia" maxlength="2" size="1" /> /
+			<input type="text" id="f_mes" maxlength="2" size="1" /> /
+			<input type="text" id="f_ano" maxlength="4" size="3" />
+			<div>(dd/mm/aaaa)</div>
+			<span id="info_fecha"></span>
+
+			<label>Estatura: </label>
+			<input type="text" size="5" maxlength="7">
+			<div>(en metros)</div>
+			<span id="info_estatura"></span>
+
+			<label>Est. Civil:</label>
+			<select>
+				<option value="-1">Selecciona una opción</option>
+				<option value="1">Soltera/o</option>
+				<option value="2">Casada/o</option>
+				<option value="3">Separada/o</option>
+				<option value="4">Divorciada/o</option>
+				<option value="5">Pareja de hecho</option>
+				<option value="6">En la gloria</option>
+				<option value="7">Es complicado!!!!</option>
+			</select>
+			<span id="info_estado_civil"></span>
+		</fieldset>
+
+
+		<fieldset>
+			<legend>Otros datos: </legend>
+			<label>Preferencias en zumos de cebada: </label>
+			<ul>
+				<li>
+					<input type="checkbox" name="bebidas" value="paulaner" />
+					<label>Paulaner</label>
+				</li>
+				<li>
+					<input type="checkbox" name="bebidas" value="coronita" />
+					<label>Coronita</label>
+				</li>
+				<li>
+					<input type="checkbox" name="bebidas" value="cruzcampo" />
+					<label>Cruzcampo</label>
+				</li>
+				<li>
+					<input type="checkbox" name="bebidas" value="desperados" />
+					<label>Desperados</label>
+				</li>
+				<li>
+					<input type="checkbox" name="bebidas" value="grimbergen" />
+					<label>Grimbergen optimo bruno</label>
+				</li>
+				<li>
+					<input type="checkbox" name="bebidas" value="judas" />
+					<label>Judas</label>
+				</li>
+				<li>
+					<input type="checkbox" name="bebidas" value="lucifer" />
+					<label>Lucifer</label>
+				</li>
+				<li>
+					<input type="checkbox" name="bebidas" value="ambar" />
+					<label>Ambar Export</label>
+				</li>
+				<div>(Mínimo 3 opciones)</div>
+			</ul>
+			<span id="info_bebidas"></span>
+
+			<label for="cc">Cuenta Corriente: </label>
+			<input type="text" maxlength="20" size="22" />
+			<span id="info_ccc"></span>
+			<div>(20 dígitos sin blancos)</div>
+
+			<label>Alguna sugerencia: </label>
+			<textarea></textarea>
+			<span id="info_sugerencia"></span>
+		</fieldset>
+
+		<fieldset>
+			<input type="submit" value="ENVIAR">
+			<input type="reset" value="Limpiar">
+		</fieldset>
+
+	</form>
+</body>
+
+</html>
